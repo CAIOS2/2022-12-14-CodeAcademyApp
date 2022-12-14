@@ -60,19 +60,6 @@ class RegisterViewController: CodeAcademyViewController {
     }
 
     // MARK: - Your implementation goes here
-    
-    func createAccount() -> Account? {
-        guard
-            let username = usernameTextField.text,
-            let name = nameTextField.text,
-            let surname = surnameTextField.text,
-            let password = passwordTextField.text
-        else {
-            return nil
-        }
-        
-        return Account(username: username, name: name, surname: surname, password: password)
-    }
 
     /*
      You need to call some functions from AccountManager to check if provided account credentials are valid.
@@ -88,4 +75,20 @@ class RegisterViewController: CodeAcademyViewController {
      In other words, we can say that user successfully registered when his account goes from unverified to verified.
      Once you do that, you can call userRegisteredSuccessfully(account:) function
      */
+}
+
+extension RegisterViewController {
+    
+    func createAccount() -> Account? {
+        guard
+            let username = usernameTextField.text,
+            let name = nameTextField.text,
+            let surname = surnameTextField.text,
+            let password = passwordTextField.text
+        else {
+            return nil
+        }
+        
+        return Account(username: username, name: name, surname: surname, password: password)
+    }
 }
