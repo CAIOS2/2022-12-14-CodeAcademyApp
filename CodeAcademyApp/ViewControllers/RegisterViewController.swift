@@ -32,6 +32,19 @@ class RegisterViewController: CodeAcademyViewController {
      Once again, you do not need to understand the code that is already here.
      */
     @IBAction func registerButtonPressed(_ sender: Any) {
+        guard let account = createAccount() else {
+            print("Missing values for account creation!")
+            return
+        }
+        
+        AccountManager.registerAccount(account) { successfullyRegistered in
+            if successfullyRegistered {
+                //TODO: Missing implementation
+            } else {
+                print("Unsuccessful registration!")
+            }
+        }
+        
         /*
          Call your function to check if account information is valid
          If it is valid and user can be registered, call userRegisteredSuccessfully(account:) function
@@ -47,6 +60,19 @@ class RegisterViewController: CodeAcademyViewController {
     }
 
     // MARK: - Your implementation goes here
+    
+    func createAccount() -> Account? {
+        guard
+            let username = usernameTextField.text,
+            let name = nameTextField.text,
+            let surname = surnameTextField.text,
+            let password = passwordTextField.text
+        else {
+            return nil
+        }
+        
+        return Account(username: username, name: name, surname: surname, password: password)
+    }
 
     /*
      You need to call some functions from AccountManager to check if provided account credentials are valid.
