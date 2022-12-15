@@ -56,6 +56,7 @@ struct AccountManager {
         completion(true, Account(username: username, name: "", surname: "", password: password))
     }
     
+        
     /*
      func verifyAccount
      

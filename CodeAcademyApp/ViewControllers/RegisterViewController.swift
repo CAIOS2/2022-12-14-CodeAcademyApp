@@ -20,10 +20,11 @@ class RegisterViewController: CodeAcademyViewController {
     @IBOutlet private weak var surnameTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         usernameTextField.delegate = self
         nameTextField.delegate = self
         surnameTextField.delegate = self
@@ -40,29 +41,29 @@ class RegisterViewController: CodeAcademyViewController {
          If it is valid and user can be registered, call userRegisteredSuccessfully(account:) function
          */
         guard let username = usernameTextField.text, !username.isEmpty else {
-            showWarning(text: "")
+            showWarning(text: "Please enter user name")
             return
         }
         guard let name = nameTextField.text, !name.isEmpty else {
-            showWarning(text: "")
+            showWarning(text: "Please enter name")
             return
         }
         guard let surname = surnameTextField.text, !surname.isEmpty else {
-            showWarning(text: "")
+            showWarning(text: "Please enter surnamename")
             return
         }
         guard let password = passwordTextField.text, !password.isEmpty else {
-            showWarning(text: "")
+            showWarning(text: "Please enter password")
             return
         }
         let account = Account(username: username, name: name, surname: surname, password: password)
         AccountManager.registerAccount(data: account) { isDone, account in
             guard isDone else {
-                self.showWarning(text: "")
+                self.showWarning(text: "Account is exist")
                 return
             }
             guard let account = account else {
-                self.showWarning(text: "")
+                self.showWarning(text: "123")
                 return
             }
             self.userRegisteredSuccessfully(account: account)
@@ -118,5 +119,19 @@ class RegisterViewController: CodeAcademyViewController {
          */
         
     }
+//    extension RegisterViewController {
+//
+//        func createAccount() -> Account? {
+//            guard
+//                let username = usernameTextField.text,
+//                let name = nameTextField.text,
+//                let surname = surnameTextField.text,
+//                let password = passwordTextField.text
+//            else {
+//                return nil
+//            }
+//
+//            return Account(username: username, name: name, surname: surname, password: password)
+//        }
 }
 

@@ -20,6 +20,7 @@ class LoginViewController: CodeAcademyViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         usernameTextField.delegate = self
         passwordTextField.delegate = self
     }
@@ -35,20 +36,20 @@ class LoginViewController: CodeAcademyViewController {
          */
         
         guard let username = usernameTextField.text, !username.isEmpty else {
-            showWarning(text: "")
+            showWarning(text: "Please enter your username")
             return
         }
         guard let password = passwordTextField.text, !password.isEmpty else {
-            showWarning(text: "")
+            showWarning(text: "Please enter your password")
             return
         }
         AccountManager.loginAccount(username: username, password: password) { isDone, account in
             guard isDone else {
-                self.showWarning(text: "")
+                self.showWarning(text: "Ok")
                 return
             }
             guard let account = account else {
-                self.showWarning(text: "")
+                self.showWarning(text: "Not OK")
                 return
             }
             self.userLoggedInSuccessfully(account: account)
