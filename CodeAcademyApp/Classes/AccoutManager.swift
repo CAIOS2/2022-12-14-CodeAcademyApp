@@ -9,6 +9,7 @@ struct AccountManager {
     
     typealias BoolCompletion = (Bool) -> Void
     
+    
     static func registerAccount(_ account: Account, completion: BoolCompletion) {
         
         //TODO: Misssing full implementation
@@ -28,6 +29,8 @@ struct AccountManager {
      I also want you to have a completion in function parameters which indicates if the registration was successful or not
      */
 
+    
+    
     /*
      func verifyAccount
 
@@ -36,6 +39,20 @@ struct AccountManager {
 
      Once again, please use completion to indicate if the operation was successful or not
      */
+    static func verifyAccount (username: String, password: String) -> Account? {
+       // var accountList = LocalDatabase?.verifi
+        
+        for account in LocalDatabase.verifiedAccounts {
+            
+            guard username == account.username && password == account.password else {
+                return nil
+            }
+            return account
+        }
+     return nil
+    }
+    
+    
 
     /*
      func blockAccount

@@ -28,6 +28,23 @@ class LoginViewController: CodeAcademyViewController {
      Once again, you do not need to understand the code that is already here.
      */
     @IBAction func loginButtonTapped(_ sender: Any) {
+        
+        
+        
+        
+        guard let username = usernameTextField.text,
+            let password = passwordTextField.text
+            else {
+            return
+        }
+        
+        guard let account = AccountManager.verifyAccount(username: username, password: password) else {
+            print("No accout found ")
+            return
+        }
+        print("Account \(String(describing: account))")
+        userLoggedInSuccessfully(account: account)
+        
         /*
          Call your function to check if login credentials are valid
          If they are valid and user can be logged in, call userLoggedInSuccessfully(account:) function
@@ -42,16 +59,4 @@ class LoginViewController: CodeAcademyViewController {
         }
     }
 
-    // MARK: - Your implementation goes here
-
-    /*
-     You need to write some functions to check if provided login credentials are valid.
-     Firstly, you need to check if an account with this username exists in our LocalDatabase.
-     Secondly, you need to check if his password is correct and not expired (more on that in the Account class)
-
-     TIP: you will need to access the data that user has entered to our text fields.
-     To do that, you can call usernameTextField.text and passwordTextField.text to get String values from them
-     */
-
-    // func...
 }
