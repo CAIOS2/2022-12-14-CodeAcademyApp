@@ -58,8 +58,8 @@ func printThings(things: Present?) -> Void {
     print("🌈🌈🌈🌈🌈🌈🌈 \(things?.presentType ?? "Ups empty ☠️")")
 }
 
-//alice.aceptPresent(present, completion: printThings)
-//alice.didUnpactPresent()
+alice.acceptPresent(present, completion: printThings)
+alice.didUnpactPresent()
 
 
 
