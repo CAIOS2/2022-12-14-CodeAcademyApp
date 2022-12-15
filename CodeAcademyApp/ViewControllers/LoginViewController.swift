@@ -28,6 +28,10 @@ class LoginViewController: CodeAcademyViewController {
      Once again, you do not need to understand the code that is already here.
      */
     @IBAction func loginButtonTapped(_ sender: Any) {
+        functionWithClosureParameter {
+            print("wuhuha closure executed")
+        }
+        
         guard let account = accountForUsername(usernameTextField.text ?? "") else {
             print("Account doesn't exist")
             return
@@ -46,6 +50,7 @@ class LoginViewController: CodeAcademyViewController {
                 print("Wrong account password")
             }
         }
+        
     }
 
     private func userLoggedInSuccessfully(account: Account) {
@@ -78,6 +83,11 @@ extension LoginViewController {
         LocalDatabase.verifiedAccounts.first { verifiedAccount in
             return verifiedAccount.username == username
         }
+    }
+    
+    private func functionWithClosureParameter(closure: () -> Void) {
+        // Execute closure
+        closure()
     }
     
     private func isPasswordCorrectForAccount(_ account: Account, password: String) -> Bool {
