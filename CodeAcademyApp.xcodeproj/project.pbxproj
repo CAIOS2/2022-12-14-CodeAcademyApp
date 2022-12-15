@@ -21,6 +21,7 @@
 		328BFDEF258509D300DFD3CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BFDED258509D300DFD3CC /* Main.storyboard */; };
 		328BFDF1258509D700DFD3CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 328BFDF0258509D700DFD3CC /* Assets.xcassets */; };
 		328BFDF4258509D700DFD3CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BFDF2258509D700DFD3CC /* LaunchScreen.storyboard */; };
+		A0D3CD42294A569900C427D0 /* Closure examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3CD41294A569900C427D0 /* Closure examples.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		328BFDF0258509D700DFD3CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		328BFDF3258509D700DFD3CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		328BFDF5258509D700DFD3CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0D3CD41294A569900C427D0 /* Closure examples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Closure examples.swift"; path = "CodeAcademyApp/Closure examples.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		328BFDDB258509D300DFD3CC = {
 			isa = PBXGroup;
 			children = (
+				A0D3CD41294A569900C427D0 /* Closure examples.swift */,
 				328BFDE6258509D300DFD3CC /* CodeAcademyApp */,
 				328BFDE5258509D300DFD3CC /* Products */,
 			);
@@ -191,6 +194,7 @@
 				3255F486258683260077215F /* CodeAcademyViewController.swift in Sources */,
 				321A1251258553F4002869DC /* RegisterViewController.swift in Sources */,
 				321A124625851F99002869DC /* Account.swift in Sources */,
+				A0D3CD42294A569900C427D0 /* Closure examples.swift in Sources */,
 				321A125525855819002869DC /* LoginViewController.swift in Sources */,
 				3255F4A1258689E70077215F /* AccountViewController.swift in Sources */,
 				328BFDE8258509D300DFD3CC /* AppDelegate.swift in Sources */,

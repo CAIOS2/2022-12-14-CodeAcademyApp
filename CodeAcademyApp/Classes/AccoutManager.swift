@@ -8,6 +8,16 @@
 import Foundation
 
 struct AccountManager {
+    
+    typealias BoolCompletion = (Bool) -> Void
+    
+    static func registerAccount(_ account: Account, completion: BoolCompletion) {
+        
+        //TODO: Misssing full implementation
+        completion(false)
+        
+        completion(true)
+    }
 
     /*
      func registerAccount
