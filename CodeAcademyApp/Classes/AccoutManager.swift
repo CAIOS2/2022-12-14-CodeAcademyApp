@@ -5,6 +5,8 @@
 //  Created by Arnas Sleivys on 2020-12-12.
 //
 
+import UIKit
+
 struct AccountManager {
     
     typealias BoolCompletion = (Bool) -> Void
