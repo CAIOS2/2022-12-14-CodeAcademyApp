@@ -36,19 +36,19 @@ class RegisterViewController: CodeAcademyViewController {
             print("Missing values for account creation!")
             return
         }
-        
         AccountManager.registerAccount(account) { successfullyRegistered in
             if successfullyRegistered {
-                //TODO: Missing implementation
+                AccountManager.verifyAccount(account) { successfullyVerified in
+                    if successfullyVerified {
+                        userRegisteredSuccessfully(account: account)
+                    } else {
+                        print("Verification unsucessful!")
+                    }
+                }
             } else {
-                print("Unsuccessful registration!")
+                print("Unsucessful registration!")
             }
         }
-        
-        /*
-         Call your function to check if account information is valid
-         If it is valid and user can be registered, call userRegisteredSuccessfully(account:) function
-        */
     }
 
     private func userRegisteredSuccessfully(account: Account) {

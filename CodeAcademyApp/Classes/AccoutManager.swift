@@ -10,32 +10,35 @@ struct AccountManager {
     typealias BoolCompletion = (Bool) -> Void
     
     static func registerAccount(_ account: Account, completion: BoolCompletion) {
-        
-        //TODO: Misssing full implementation
-        completion(false)
-        
+        if account.username.isEmpty || !account.isPasswordSecure {
+            completion(false)
+            return
+        }
+        // Check these
+
+//        LocalDatabase.verifiedAccounts.contains(where: <#T##(Account) throws -> Bool#>)
+//        LocalDatabase.unverifiedAccounts.contains(where: <#T##(Account) throws -> Bool#>)
+//        LocalDatabase.blockedAccounts.contains(where: <#T##(Account) throws -> Bool#>)
+//        LocalDatabase.deactivatedAccounts.contains(where: <#T##(Account) throws -> Bool#>)
+        LocalDatabase.unverifiedAccounts.append(account)
+        LocalDatabase.unverifiedAccounts.append(account)
         completion(true)
     }
 
-    /*
-     func registerAccount
-
-     Firstly, you need to check if all required fields are provided.
-     Secondly, you need to check if the password is secure. More about that in the Account class.
-     Finally, you need to check if an account with that username is not already present in our LocalDatabase.
-     Keep in mind, that in our local database we have several types of users: verified, unverified, blocked etc.
-
-     I also want you to have a completion in function parameters which indicates if the registration was successful or not
-     */
-
-    /*
-     func verifyAccount
-
-     Firstly, check if this account exists in our database at all
-     Secondly, you need to remove it from unverified accounts and move to verified ones
-
-     Once again, please use completion to indicate if the operation was successful or not
-     */
+    static func verifyAccount(_ account: Account, completion: BoolCompletion) {
+        let accountExists = LocalDatabase.unverifiedAccounts.contains { unverifiedAccount -> Bool in
+            return unverifiedAccount.username == account.username
+        }
+        guard accountExists else {
+            completion(false)
+            return
+        }
+        LocalDatabase.unverifiedAccounts.removeAll {
+            $0.username == account.username
+        }
+        LocalDatabase.verifiedAccounts.append(account)
+        completion(true)
+    }
 
     /*
      func blockAccount
