@@ -5,6 +5,8 @@
 //  Created by Arnas Sleivys on 2020-12-12.
 //
 
+import Foundation
+
 struct AccountManager {
 
     /*
@@ -17,6 +19,25 @@ struct AccountManager {
 
      I also want you to have a completion in function parameters which indicates if the registration was successful or not
      */
+    
+    static func registerAccount (username: String,
+                                 name: String,
+                                 surname: String,
+                                 password: String,
+                                 profilePictureURL: URL? ,
+                                 friends: [Account]?,
+                                 completion: (Bool) -> Void) {
+        
+        guard username != "", name != "", surname != "", password != "" else { completion(false); return }
+        
+        guard (LocalDatabase.verifiedAccounts.first { $0.username == username} == nil)  else {completion(false); return}
+        guard (LocalDatabase.unverifiedAccounts.first { $0.username == username} == nil)  else {completion(false); return}
+        guard (LocalDatabase.blockedAccounts.first { $0.username == username} == nil)  else {completion(false); return}
+        guard (LocalDatabase.blockedAccounts.first { $0.username == username} == nil)  else {completion(false); return}
+        
+        let account = Account(username: username, name: name, surname: surname, password: password, profilePictureURL: profilePictureURL, friends: friends )
+        completion(true)
+    }
 
     /*
      func verifyAccount
@@ -26,7 +47,12 @@ struct AccountManager {
 
      Once again, please use completion to indicate if the operation was successful or not
      */
-
+    func verifyAccount(_ account: Account, completion: (Bool) -> Void) {
+        guard LocalDatabase.unverifiedAccounts.first(where: {$0.username == account.username}) != nil else {completion(false)
+            return}
+        
+        
+    }
     /*
      func blockAccount
 
