@@ -39,7 +39,8 @@ class RegisterViewController: CodeAcademyViewController {
         
         AccountManager.registerAccount(account) { successfullyRegistered in
             if successfullyRegistered {
-                //TODO: Missing implementation
+                AccountManager.verifyAccount(account) { if $0 {print("verified") }
+                }
             } else {
                 print("Unsuccessful registration!")
             }
@@ -75,6 +76,8 @@ class RegisterViewController: CodeAcademyViewController {
      In other words, we can say that user successfully registered when his account goes from unverified to verified.
      Once you do that, you can call userRegisteredSuccessfully(account:) function
      */
+    
+    @IBAction func unwindAction(unwindSegue: UIStoryboardSegue) {}
 }
 
 extension RegisterViewController {

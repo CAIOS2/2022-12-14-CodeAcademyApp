@@ -32,9 +32,27 @@ class LoginViewController: CodeAcademyViewController {
          Call your function to check if login credentials are valid
          If they are valid and user can be logged in, call userLoggedInSuccessfully(account:) function
         */
-    }
+        login { success, account in
+            if let account = account, success {
+                userLoggedInSuccessfully(account: account)
+            }
+            else {
+            }
+        }
+  
+        func login (completion: (Bool, Account?) -> Void) {
+            guard let account = LocalDatabase.verifiedAccounts.first(where: {$0.username == usernameTextField.text}) else {
+                print("No user found")
+                completion(false, nil)
+            }
+            guard account.password == passwordTextField.text else {
+                print("wrong password")
+                completion(false, nil)
+            }
+            
+        }
 
-    private func userLoggedInSuccessfully(account: Account) {
+     func userLoggedInSuccessfully(account: Account) {
         let storyboard = UIStoryboard(name: "Account", bundle: nil)
         if let accountViewController = storyboard.instantiateViewController(identifier: "AccountViewController") as? AccountViewController {
             accountViewController.account = account
