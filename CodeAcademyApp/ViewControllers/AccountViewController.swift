@@ -87,6 +87,21 @@ class AccountViewController: CodeAcademyViewController {
          Your implementation for showing all the friends on this account.
          You can use print() to print the result to the console
          */
+        
+        guard let friends = account?.friends else {
+            print("No Friends")
+            return
+        }
+        
+        var allFriends: String = friends.reduce("") { partialResult, friends in
+            return partialResult + " - " + friends.name
+        }
+        
+        var _ = friends.reduce(into: "") { partialResult, friend in
+            partialResult += friend.username
+        }
+        
+        print(allFriends)
     }
 
     /*
