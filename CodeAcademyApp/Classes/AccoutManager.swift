@@ -42,20 +42,18 @@ struct AccountManager {
         completion(true)
     }
 
-    static func blockAccount (account: Account, completion: BoolCompletion) {
-        let accountExists = LocalDatabase.verifiedAccounts.contains { verifiedAccount -> Bool in
-            return verifiedAccount.username == account.username
-        }
-        guard accountExists else {
-            completion(false)
-            return
-        }
-        LocalDatabase.verifiedAccounts.removeAll {
-            $0.username == account.username
-        }
-        LocalDatabase.blockedAccounts.append(account)
-        completion(true)
-    }
+    /*
+     func blockAccount
 
+     Implementation details are up to you
+     Please use completion as in the ones above
+     */
+    
+    /*
+     func deactivateAccount
+
+     Implementation details are up to you
+     Please use completion as in the ones above
+     */
 }
 
