@@ -104,6 +104,10 @@ class AccountViewController: CodeAcademyViewController {
         print(allFriends)
     }
 
+    @IBAction func accountPreferencesTapped(_ sender: Any) {
+        // Show account preferences
+    }
+    
     /*
      You DO NOT need to do any modifications here
      */

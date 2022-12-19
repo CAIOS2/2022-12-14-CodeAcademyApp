@@ -22,6 +22,8 @@
 		328BFDF1258509D700DFD3CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 328BFDF0258509D700DFD3CC /* Assets.xcassets */; };
 		328BFDF4258509D700DFD3CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BFDF2258509D700DFD3CC /* LaunchScreen.storyboard */; };
 		A0D3CD42294A569900C427D0 /* Closure examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3CD41294A569900C427D0 /* Closure examples.swift */; };
+		C153C5DB2950EAA000323AF5 /* AccountPreferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C153C5DA2950EAA000323AF5 /* AccountPreferences.storyboard */; };
+		C153C5DD2950EAAA00323AF5 /* AccountPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C153C5DC2950EAAA00323AF5 /* AccountPreferencesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		328BFDF5258509D700DFD3CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0C7FC70294B88E5008D8717 /* Closure examples.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Closure examples.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A0D3CD41294A569900C427D0 /* Closure examples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Closure examples.swift"; path = "CodeAcademyApp/Closure examples.swift"; sourceTree = "<group>"; };
+		C153C5DA2950EAA000323AF5 /* AccountPreferences.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AccountPreferences.storyboard; sourceTree = "<group>"; };
+		C153C5DC2950EAAA00323AF5 /* AccountPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountPreferencesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,7 @@
 		321A124F258553E3002869DC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C153C5DC2950EAAA00323AF5 /* AccountPreferencesViewController.swift */,
 				321A1250258553F4002869DC /* RegisterViewController.swift */,
 				321A125425855819002869DC /* LoginViewController.swift */,
 				3255F485258683260077215F /* CodeAcademyViewController.swift */,
@@ -80,6 +85,7 @@
 		3255F4A3258697DE0077215F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				C153C5DA2950EAA000323AF5 /* AccountPreferences.storyboard */,
 				328BFDF2258509D700DFD3CC /* LaunchScreen.storyboard */,
 				328BFDED258509D300DFD3CC /* Main.storyboard */,
 				3255F4A4258697F50077215F /* Account.storyboard */,
@@ -179,6 +185,7 @@
 			files = (
 				328BFDF4258509D700DFD3CC /* LaunchScreen.storyboard in Resources */,
 				328BFDF1258509D700DFD3CC /* Assets.xcassets in Resources */,
+				C153C5DB2950EAA000323AF5 /* AccountPreferences.storyboard in Resources */,
 				3255F4A5258697F50077215F /* Account.storyboard in Resources */,
 				328BFDEF258509D300DFD3CC /* Main.storyboard in Resources */,
 			);
@@ -198,6 +205,7 @@
 				321A124625851F99002869DC /* Account.swift in Sources */,
 				A0D3CD42294A569900C427D0 /* Closure examples.swift in Sources */,
 				321A125525855819002869DC /* LoginViewController.swift in Sources */,
+				C153C5DD2950EAAA00323AF5 /* AccountPreferencesViewController.swift in Sources */,
 				3255F4A1258689E70077215F /* AccountViewController.swift in Sources */,
 				328BFDE8258509D300DFD3CC /* AppDelegate.swift in Sources */,
 				328BFDEA258509D300DFD3CC /* SceneDelegate.swift in Sources */,

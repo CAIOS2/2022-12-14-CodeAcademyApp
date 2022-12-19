@@ -48,7 +48,7 @@ struct AccountManager {
      Implementation details are up to you
      Please use completion as in the ones above
      */
-
+    
     /*
      func deactivateAccount
 
