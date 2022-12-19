@@ -43,6 +43,21 @@ class AccountViewController: CodeAcademyViewController {
          Your implementation for adding a new friend.
          You can retrieve that new friend username from accountNameTextField.text
          */
+        guard let account = account else {return}
+        guard let friendAccountName = accountNameTextField.text else {return}
+        
+        guard let friend = LocalDatabase.verifiedAccounts.first(where:{ $0.username == friendAccountName }) else {
+            print("No friend account in database")
+            return
+        }
+        
+        guard !account.isFriends(withAccount: friend) else {
+            print("Friend was added before")
+           return
+        }
+        
+        account.addFriend(account: friend)
+        print("\(friendAccountName) succesfully added")
     }
 
     @IBAction func removeFriendButtonTapped(_ sender: Any) {
@@ -50,6 +65,21 @@ class AccountViewController: CodeAcademyViewController {
          Your implementation for removing a friend.
          You can retrieve that new friend username from accountNameTextField.text
          */
+        
+        guard let account = account else {return}
+        guard let friendAccountName = accountNameTextField.text else {return}
+        
+        guard let friend = LocalDatabase.verifiedAccounts.first(where:{ $0.username == friendAccountName }) else {
+            print("No friend account in database")
+            return
+        }
+        
+        guard account.isFriends(withAccount: friend) else {
+            print("Friend doesn't exist")
+           return
+        }
+        
+        account.removeFriend(account: friend)
     }
 
     @IBAction func showFriendsButtonTapped(_ sender: Any) {
@@ -57,6 +87,21 @@ class AccountViewController: CodeAcademyViewController {
          Your implementation for showing all the friends on this account.
          You can use print() to print the result to the console
          */
+        
+        guard let friends = account?.friends else {
+            print("No Friends")
+            return
+        }
+        
+        var allFriends: String = friends.reduce("") { partialResult, friends in
+            return partialResult + " - " + friends.name
+        }
+        
+        var _ = friends.reduce(into: "") { partialResult, friend in
+            partialResult += friend.username
+        }
+        
+        print(allFriends)
     }
 
     /*

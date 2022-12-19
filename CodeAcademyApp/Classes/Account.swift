@@ -50,7 +50,18 @@ extension Account {
     }
 
     func addFriend(account: Account) {
+        if friends == nil {
+            friends = []
+        }
+        
         friends?.append(account)
+        
+//        if friends != nil {
+//            friends?.append(account)
+//        } else {
+//            friends = [Account]()
+//            friends?.append(account)
+//        }
     }
 
     func removeFriend(account: Account) {

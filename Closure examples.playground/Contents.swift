@@ -14,8 +14,9 @@ struct Present {
 
 class Alice {
     typealias PresentOpenedCompletion = (Present?) -> Void
-    var presentOpenedCompletion: PresentOpenedCompletion?
+    
     var present: Present?
+    var presentOpenedCompletion: PresentOpenedCompletion?
     
     func acceptPresent(_ present: Present, completion: PresentOpenedCompletion?) {
         print("#1")
@@ -36,9 +37,9 @@ let present = Present(presentType: "Playstation PS6")
 let alice = Alice()
 
 //#1 same behaviour
-//alice.aceptPresent(present) { boolValue in
-// print(boolValue)
-//}
+alice.acceptPresent(present) { presentValue in
+    print(presentValue?.presentType)
+}
 
 //#2 same behaviour
 //alice.aceptPresent(present) { print($0) }
@@ -54,12 +55,12 @@ let alice = Alice()
 //alice.didUnpactPresent()
 
 //#5 same behaviour
-func printThings(things: Present?) -> Void {
-    print("🌈🌈🌈🌈🌈🌈🌈 \(things?.presentType ?? "Ups empty ☠️")")
-}
-
-//alice.aceptPresent(present, completion: printThings)
-//alice.didUnpactPresent()
+//func printThings(things: Present?) {
+//    print("🌈🌈🌈🌈🌈🌈🌈 \(things?.presentType ?? "Ups empty ☠️")")
+//}
+//
+//alice.acceptPresent(present, completion: printThings)
+alice.didUnpactPresent()
 
 
 
