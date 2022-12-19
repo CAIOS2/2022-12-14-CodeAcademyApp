@@ -21,6 +21,8 @@
 		328BFDEF258509D300DFD3CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BFDED258509D300DFD3CC /* Main.storyboard */; };
 		328BFDF1258509D700DFD3CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 328BFDF0258509D700DFD3CC /* Assets.xcassets */; };
 		328BFDF4258509D700DFD3CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328BFDF2258509D700DFD3CC /* LaunchScreen.storyboard */; };
+		412CA3C82950EDAE007C19C8 /* AccountPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412CA3C72950EDAE007C19C8 /* AccountPreferencesViewController.swift */; };
+		412CA3CA2950EF4D007C19C8 /* AccountPreferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 412CA3C92950EF4D007C19C8 /* AccountPreferences.storyboard */; };
 		A0D3CD42294A569900C427D0 /* Closure examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3CD41294A569900C427D0 /* Closure examples.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		328BFDF0258509D700DFD3CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		328BFDF3258509D700DFD3CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		328BFDF5258509D700DFD3CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		412CA3C72950EDAE007C19C8 /* AccountPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPreferencesViewController.swift; sourceTree = "<group>"; };
+		412CA3C92950EF4D007C19C8 /* AccountPreferences.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AccountPreferences.storyboard; sourceTree = "<group>"; };
 		A0D3CD41294A569900C427D0 /* Closure examples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Closure examples.swift"; path = "CodeAcademyApp/Closure examples.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +76,7 @@
 				321A125425855819002869DC /* LoginViewController.swift */,
 				3255F485258683260077215F /* CodeAcademyViewController.swift */,
 				3255F4A0258689E70077215F /* AccountViewController.swift */,
+				412CA3C72950EDAE007C19C8 /* AccountPreferencesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -79,6 +84,7 @@
 		3255F4A3258697DE0077215F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				412CA3C92950EF4D007C19C8 /* AccountPreferences.storyboard */,
 				328BFDF2258509D700DFD3CC /* LaunchScreen.storyboard */,
 				328BFDED258509D300DFD3CC /* Main.storyboard */,
 				3255F4A4258697F50077215F /* Account.storyboard */,
@@ -177,6 +183,7 @@
 			files = (
 				328BFDF4258509D700DFD3CC /* LaunchScreen.storyboard in Resources */,
 				328BFDF1258509D700DFD3CC /* Assets.xcassets in Resources */,
+				412CA3CA2950EF4D007C19C8 /* AccountPreferences.storyboard in Resources */,
 				3255F4A5258697F50077215F /* Account.storyboard in Resources */,
 				328BFDEF258509D300DFD3CC /* Main.storyboard in Resources */,
 			);
@@ -196,6 +203,7 @@
 				321A124625851F99002869DC /* Account.swift in Sources */,
 				A0D3CD42294A569900C427D0 /* Closure examples.swift in Sources */,
 				321A125525855819002869DC /* LoginViewController.swift in Sources */,
+				412CA3C82950EDAE007C19C8 /* AccountPreferencesViewController.swift in Sources */,
 				3255F4A1258689E70077215F /* AccountViewController.swift in Sources */,
 				328BFDE8258509D300DFD3CC /* AppDelegate.swift in Sources */,
 				328BFDEA258509D300DFD3CC /* SceneDelegate.swift in Sources */,

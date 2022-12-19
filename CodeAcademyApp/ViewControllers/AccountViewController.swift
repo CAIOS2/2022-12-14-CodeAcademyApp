@@ -126,7 +126,21 @@ class AccountViewController: CodeAcademyViewController {
         print(friendsName)
     }
     
-    
+    @IBAction func accountPreferencesTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "AccountPreferences", bundle: nil)
+                
+                if let accountViewController = storyboard.instantiateViewController(identifier: "AccountPreferencesViewController") as? AccountPreferencesViewController {
+                    accountViewController.account = account
+                    accountViewController.onDetailsSaved = { details in
+                        self.didGetAccountPrefs(details: details)
+                    }
+                    present(accountViewController, animated: true)
+                }
+            }
+            
+            func didGetAccountPrefs(details: AccountDetails) -> () {
+                print("did get details")
+            }
     /*
      You DO NOT need to do any modifications here
      */
