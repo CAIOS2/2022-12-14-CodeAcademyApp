@@ -13,7 +13,7 @@
 
 struct LocalDatabase {
     static var unverifiedAccounts = [Account]()
-    static var verifiedAccounts = [Account]()
+    static var verifiedAccounts = [Account(username: "Romas", name: "romas", surname: "petkus", password: "12345")]
     static var blockedAccounts = [Account]()
     static var deactivatedAccounts = [Account]()
 }

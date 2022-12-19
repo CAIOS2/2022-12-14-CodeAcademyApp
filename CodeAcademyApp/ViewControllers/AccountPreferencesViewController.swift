@@ -14,6 +14,15 @@ import UIKit
  Perdavimas turi vykti ant saveButtonTapped
  
  */
+
+struct AccountDetails {
+    let username: String
+}
+
+protocol AccountPreferencesViewControllerDelegate {
+    func didGetAccountPrefs(details: AccountDetails)
+}
+
 class AccountPreferencesViewController: CodeAcademyViewController {
 
     @IBOutlet weak var usernameTextField: UITextField!
@@ -24,9 +33,13 @@ class AccountPreferencesViewController: CodeAcademyViewController {
 
     var account: Account?
     // protokolas arba closure atsiranda cia
+//    var accountVC: AccountPreferencesViewControllerDelegate?
+    var onDetailsSaved: ((AccountDetails) -> ())?
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
+//        accountVC?.didGetAccountPrefs(details: AccountDetails(username: usernameTextField.text!))
+        onDetailsSaved?(AccountDetails(username: usernameTextField.text!))
         returnToMainView()
     }
 

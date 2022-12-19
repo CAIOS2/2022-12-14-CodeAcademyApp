@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AccountViewController: CodeAcademyViewController {
+class AccountViewController: CodeAcademyViewController, AccountPreferencesViewControllerDelegate {
 
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var accountNameTextField: UITextField!
@@ -106,6 +106,20 @@ class AccountViewController: CodeAcademyViewController {
 
     @IBAction func accountPreferencesTapped(_ sender: Any) {
         // Show account preferences
+        let storyboard = UIStoryboard(name: "AccountPreferences", bundle: nil)
+        
+        if let accountViewController = storyboard.instantiateViewController(identifier: "AccountPreferencesViewController") as? AccountPreferencesViewController {
+            accountViewController.account = account
+//            accountViewController.accountVC = self
+            accountViewController.onDetailsSaved = { details in
+                self.didGetAccountPrefs(details: details)
+            }
+            present(accountViewController, animated: true)
+        }
+    }
+    
+    func didGetAccountPrefs(details: AccountDetails) -> () {
+        print("did get details")
     }
     
     /*
