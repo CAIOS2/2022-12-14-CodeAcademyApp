@@ -48,9 +48,14 @@ extension Account {
             return account.username == friend.username
         })
     }
-
+// sukuriau funkcija, nes var friends: [Account]?
     func addFriend(account: Account) {
-        friends?.append(account)
+        if friends == nil {
+            friends = [account]
+        } else {
+            friends?.append(account)
+        }
+        
     }
 
     func removeFriend(account: Account) {

@@ -45,7 +45,7 @@ class LoginViewController: CodeAcademyViewController {
         }
         AccountManager.loginAccount(username: username, password: password) { isDone, account in
             guard isDone else {
-                self.showWarning(text: "Ok")
+                self.showWarning(text: "User not exist")
                 return
             }
             guard let account = account else {
@@ -56,13 +56,7 @@ class LoginViewController: CodeAcademyViewController {
         }
         
     }
-    private func showWarning(text: String) {
-        let alertController = UIAlertController(title: "Message", message: text, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Close", style: .default)
-        alertController.addAction(action)
-        present(alertController, animated: true)
-        
-    }
+   
     
     private func userLoggedInSuccessfully(account: Account) {
         let storyboard = UIStoryboard(name: "Account", bundle: nil)

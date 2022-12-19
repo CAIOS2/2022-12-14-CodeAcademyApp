@@ -71,14 +71,6 @@ class RegisterViewController: CodeAcademyViewController {
         
     }
     
-    private func showWarning(text: String) {
-        let alertController = UIAlertController(title: "Message", message: text, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Close", style: .default)
-        alertController.addAction(action)
-        present(alertController, animated: true)
-    }
-    
-    
     
     
     private func userRegisteredSuccessfully(account: Account) {
@@ -119,19 +111,4 @@ class RegisterViewController: CodeAcademyViewController {
          */
         
     }
-//    extension RegisterViewController {
-//
-//        func createAccount() -> Account? {
-//            guard
-//                let username = usernameTextField.text,
-//                let name = nameTextField.text,
-//                let surname = surnameTextField.text,
-//                let password = passwordTextField.text
-//            else {
-//                return nil
-//            }
-//
-//            return Account(username: username, name: name, surname: surname, password: password)
-//        }
 }
-

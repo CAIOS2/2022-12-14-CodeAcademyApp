@@ -22,7 +22,7 @@ class AccountViewController: CodeAcademyViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         usernameLabel.text = account?.username
-        accountNameTextField.text = account?.name
+        
     }
     /*
      You should add your implementation here for setting username in the Account view.
@@ -46,6 +46,30 @@ class AccountViewController: CodeAcademyViewController {
          Your implementation for adding a new friend.
          You can retrieve that new friend username from accountNameTextField.text
          */
+        guard let name = accountNameTextField.text, !name.isEmpty else {
+            showWarning(text: "Account not find")
+            return
+        }
+        accountNameTextField.text = nil
+         AccountManager.findAccount(username: name, completion: { [weak self] isExist, account in
+             guard let account = account else {
+                 self?.showWarning(text: "Account not find")
+                 return
+             }
+             guard let currentAccount = self?.account else {
+                 self?.showWarning(text: "Account not find")
+                 return
+             }
+            
+             guard !currentAccount.isFriends(withAccount: account) else {
+                 self?.showWarning(text: "You already friends")
+                 return
+             }
+             
+             self?.account?.addFriend(account: account)
+             self?.showWarning(text: "You are friends")
+        })
+        
     }
     
     @IBAction func removeFriendButtonTapped(_ sender: Any) {
@@ -53,14 +77,55 @@ class AccountViewController: CodeAcademyViewController {
          Your implementation for removing a friend.
          You can retrieve that new friend username from accountNameTextField.text
          */
+        guard let name = accountNameTextField.text, !name.isEmpty else {
+            showWarning(text: "Account not find")
+            return
+        }
+        accountNameTextField.text = nil
+        AccountManager.findAccount(username: name, completion: { [weak self] isExist, account in
+            guard let account = account else {
+                self?.showWarning(text: "Account not find")
+                return
+            }
+            guard let currentAccount = self?.account else {
+                self?.showWarning(text: "Account not find")
+                return
+            }
+           
+            guard currentAccount.isFriends(withAccount: account) else {
+                self?.showWarning(text: "You are not friends")
+                return
+            }
+            self?.account?.removeFriend(account: account)
+            self?.showWarning(text: "Friend removed")
+       })
+        
     }
+
     
     @IBAction func showFriendsButtonTapped(_ sender: Any) {
         /*
          Your implementation for showing all the friends on this account.
          You can use print() to print the result to the console
-         */
+     */
+        guard let account = account else {
+            showWarning(text: "Account not find")
+            return
+        }
+        
+        guard let friends = account.friends, !friends.isEmpty else {
+            showWarning(text: "Frieds list is empty")
+            return
+        }
+//        friends.forEach { friend in
+//            print(friend.username, "\n")
+//        }
+        let friendsName = friends.reduce("") { partialResult, friend in
+            return partialResult + " _ " + friend.username
+        }
+        print(friendsName)
     }
+    
     
     /*
      You DO NOT need to do any modifications here

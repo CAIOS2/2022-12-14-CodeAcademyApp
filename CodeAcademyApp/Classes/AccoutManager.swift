@@ -53,8 +53,29 @@ struct AccountManager {
         
     }
     static func loginAccount(username: String, password: String, completion: @escaping BoolCompletion) {
-        completion(true, Account(username: username, name: "", surname: "", password: password))
+        if let account = LocalDatabase.unverifiedAccounts.first(where: {$0.username == username && $0.password == password} ) {
+            completion(true, account)
+            
+        } else if let account = LocalDatabase.verifiedAccounts.first(where: {$0.username == username && $0.password == password} ) {
+            completion(true, account)
+            
+        } else {
+            completion(false, nil)
+        }
+        
     }
+    static func findAccount(username: String, completion: @escaping BoolCompletion) {
+        if let account = LocalDatabase.unverifiedAccounts.first(where: {$0.username == username} ) {
+            completion(true, account)
+            
+        } else if let account = LocalDatabase.verifiedAccounts.first(where: {$0.username == username} ) {
+            completion(true, account)
+            
+        } else {
+            completion(false, nil)
+        }
+    }
+    
     
         
     /*
@@ -65,8 +86,14 @@ struct AccountManager {
      
      Once again, please use completion to indicate if the operation was successful or not
      */
-    static func verifyAccount(completion: @escaping BoolCompletion) {
-        
+    static func verifyAccount(username: String, completion: @escaping BoolCompletion) {
+        if let account = LocalDatabase.unverifiedAccounts.first(where: {$0.username == username}) {
+           let _ = LocalDatabase.unverifiedAccounts.removeAll(where: {$0.username == username})
+            LocalDatabase.verifiedAccounts.append(account)
+            completion(true, account)
+        } else {
+            completion(false, nil)
+        }
     }
     
     /*
@@ -75,7 +102,29 @@ struct AccountManager {
      Implementation details are up to you
      Please use completion as in the ones above
      */
-    static func blockAccount(completion: @escaping BoolCompletion) {
+    static func blockAccount(username: String, completion: @escaping BoolCompletion) {
+        let isBlocked = LocalDatabase.blockedAccounts.contains { account in
+            return account.username == username
+        }
+        let isDeactivated = LocalDatabase.deactivatedAccounts.contains { account in
+            return account.username == username
+        }
+        let contains =  !isBlocked && !isDeactivated
+        guard contains else {
+            completion(false, nil)
+            return
+        }
+        if let account = LocalDatabase.unverifiedAccounts.first(where: {$0.username == username} ) {
+            let _ = LocalDatabase.unverifiedAccounts.removeAll(where: {$0.username == username})
+            LocalDatabase.blockedAccounts.append(account)
+            completion(true, account)
+        } else if let account = LocalDatabase.verifiedAccounts.first(where: {$0.username == username} ) {
+            let _ = LocalDatabase.verifiedAccounts.removeAll(where: {$0.username == username})
+            LocalDatabase.blockedAccounts.append(account)
+            completion(true, account)
+        } else {
+            completion(false, nil)
+        }
         
     }
     
@@ -85,8 +134,29 @@ struct AccountManager {
      Implementation details are up to you
      Please use completion as in the ones above
      */
-    static func deactivateAccount(completion: @escaping BoolCompletion) {
-        
+    static func deactivateAccount(username: String, completion: @escaping BoolCompletion) {
+        let isBlocked = LocalDatabase.blockedAccounts.contains { account in
+            return account.username == username
+        }
+        let isDeactivated = LocalDatabase.deactivatedAccounts.contains { account in
+            return account.username == username
+        }
+        let contains =  !isBlocked && !isDeactivated
+        guard contains else {
+            completion(false, nil)
+            return
+        }
+        if let account = LocalDatabase.unverifiedAccounts.first(where: {$0.username == username} ) {
+            let _ = LocalDatabase.unverifiedAccounts.removeAll(where: {$0.username == username})
+            LocalDatabase.deactivatedAccounts.append(account)
+            completion(true, account)
+        } else if let account = LocalDatabase.verifiedAccounts.first(where: {$0.username == username} ) {
+            let _ = LocalDatabase.verifiedAccounts.removeAll(where: {$0.username == username})
+            LocalDatabase.deactivatedAccounts.append(account)
+            completion(true, account)
+        } else {
+            completion(false, nil)
+        }
     }
 }
 
