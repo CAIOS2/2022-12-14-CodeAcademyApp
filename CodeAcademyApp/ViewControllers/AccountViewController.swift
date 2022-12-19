@@ -43,6 +43,19 @@ class AccountViewController: CodeAcademyViewController {
          Your implementation for adding a new friend.
          You can retrieve that new friend username from accountNameTextField.text
          */
+        guard let account = account else {return}
+        guard let friendAccountName = accountNameTextField.text else {return}
+        
+        guard let friend = LocalDatabase.verifiedAccounts.first(where:{ $0.username == friendAccountName}) else {
+            print("No friend account in database")
+            return}
+        
+        guard !account.isFriends(withAccount: friend) else {
+            print("Friend was added before")
+           return
+        }
+        account.addFriend(account: friend)
+        print("\(friendAccountName) succesfully added")
     }
 
     @IBAction func removeFriendButtonTapped(_ sender: Any) {
