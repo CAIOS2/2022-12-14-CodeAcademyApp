@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum LoginError: Error {
+    case missingLoginData
+    case newLoginError
+}
+
 class LoginViewController: CodeAcademyViewController {
 
     /*
@@ -22,26 +27,41 @@ class LoginViewController: CodeAcademyViewController {
         usernameTextField.delegate = self
         passwordTextField.delegate = self
     }
-
-
     
     /*
       Task: Implement `userEnteredLoginData` function with throwing capability
      */
     
-    //func userEnteredLoginData()
+    func checkIfUserEnteredLoginData() throws {
+        guard
+            let usernameText = usernameTextField.text,
+            !usernameText.isEmpty,
+            let passwordText = passwordTextField.text,
+            !passwordText.isEmpty
+        else {
+            throw LoginError.newLoginError
+        }
+    }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        
-        /*
-         Task: Show error screen when `userEnteredLoginData` throws error
-         Using do try catch block
-         */
-        
-        
-        functionWithClosureParameter {
-            print("wuhuha closure executed")
+    
+        do {
+            try checkIfUserEnteredLoginData()
+        } catch let error {
+            if let error = error as? LoginError {
+                switch error {
+                case .missingLoginData:
+                    showAlert(title: "Missing login data", message: "Please input login data")
+                case .newLoginError:
+                    showAlert(title: "new error", message: "Please input login data")
+                }
+            }
         }
+        
+        
+//        functionWithClosureParameter {
+//            print("wuhuha closure executed")
+//        }
         
         guard let account = accountForUsername(usernameTextField.text ?? "") else {
             print("Account doesn't exist")
