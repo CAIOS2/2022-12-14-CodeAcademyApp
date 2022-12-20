@@ -17,6 +17,7 @@ class AccountViewController: CodeAcademyViewController {
     @IBOutlet weak var logoutButton: UIButton!
 
     var account: Account?
+    var accountPreferences: AccountPreferences?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,9 +106,19 @@ class AccountViewController: CodeAcademyViewController {
     }
 
     @IBAction func accountPreferencesTapped(_ sender: Any) {
-        // Show account preferences
+        
+        let storyboard = UIStoryboard(name: "AccountPreferences", bundle: nil)
+        if let prefVC = storyboard.instantiateViewController(identifier: "AccountPreferencesViewController") as? AccountPreferencesViewController {
+            prefVC.account = account
+            prefVC.didSavePreferences = {[weak self] preferences in
+                guard let self = self else {return}
+                self.accountPreferences = preferences
+                print("got preferences")
+                
+            }
+            present(prefVC, animated: true)
+        }
     }
-    
     /*
      You DO NOT need to do any modifications here
      */
@@ -116,4 +127,6 @@ class AccountViewController: CodeAcademyViewController {
         let mainViewController = storyboard.instantiateViewController(identifier: "MainViewController")
         present(mainViewController, animated: true)
     }
+    
+    private func updateAccount(account: Account, accountPreferences: AccountPreferences) {}
 }
