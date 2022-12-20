@@ -28,10 +28,6 @@ class LoginViewController: CodeAcademyViewController {
         passwordTextField.delegate = self
     }
     
-    /*
-      Task: Implement `userEnteredLoginData` function with throwing capability
-     */
-    
     func checkIfUserEnteredLoginData() throws {
         guard
             let usernameText = usernameTextField.text,
@@ -58,10 +54,20 @@ class LoginViewController: CodeAcademyViewController {
             }
         }
         
+        let myArray = [1, 2, 3, 5]
         
-//        functionWithClosureParameter {
-//            print("wuhuha closure executed")
-//        }
+        do {
+            let someInt = try myArray.first { value in
+                if value > 4 {
+                    print("Create")
+                    return true
+                }
+                throw LoginError.newLoginError
+            }
+        } catch {
+            print("some error. someInt is not created")
+        }
+        
         
         guard let account = accountForUsername(usernameTextField.text ?? "") else {
             print("Account doesn't exist")
