@@ -23,11 +23,22 @@ class LoginViewController: CodeAcademyViewController {
         passwordTextField.delegate = self
     }
 
+
+    
     /*
-     This function is triggered when user presses on Login button.
-     Once again, you do not need to understand the code that is already here.
+      Task: Implement `userEnteredLoginData` function with throwing capability
      */
+    
+    //func userEnteredLoginData()
+    
     @IBAction func loginButtonTapped(_ sender: Any) {
+        
+        /*
+         Task: Show error screen when `userEnteredLoginData` throws error
+         Using do try catch block
+         */
+        
+        
         functionWithClosureParameter {
             print("wuhuha closure executed")
         }
@@ -108,5 +119,21 @@ extension LoginViewController {
         } else {
             completion(false)
         }
+    }
+}
+
+extension LoginViewController {
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        let alertAction = UIAlertAction(
+            title: "OK",
+            style: .default
+        )
+        alertController.addAction(alertAction)
+        present(alertController, animated: true)
     }
 }
