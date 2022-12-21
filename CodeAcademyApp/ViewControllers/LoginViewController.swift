@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol Delegate {
+    func manoFunkcija()
+}
+
 enum LoginError: Error {
     case missingLoginData
     case newLoginError
@@ -22,8 +26,74 @@ class LoginViewController: CodeAcademyViewController {
 
     @IBOutlet private weak var usernameTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
-
+    
+    // MARK: - Properties
+    
+    lazy var errorAlert = {
+        let controller = UIAlertController(title: "Lazy error Alert 🐼", message: "Error Message", preferredStyle: .alert)
+        controller.addAction(UIAlertAction(title: "Kwuak 🐸", style: .destructive))
+        return controller
+    }()
+    
+    private var _someValue = 0
+    
+    lazy var manoLazyInt = {
+        _someValue += 1
+        return 10
+    }()
+    
+    var manoComputedInt: Int {
+        get {
+            return _someValue
+        }
+        set(manoValue) {
+            print(manoValue)
+        }
+    }
+    
+    private func makeAnalyticsCall() {
+        // Value updated
+    }
+    
+    private var _myHeath: Int = 100
+    
+    // Computed Property setter/getter
+    var myHealth: Int {
+        set {
+            if newValue <= 100 {
+                _myHeath = newValue
+            }
+        }
+        get {
+            return _myHeath
+        }
+    }
+    
+    // Property Observer
+    var someValue: Int = 20 {
+        willSet(someNewValue) {
+            print("Current value is \(someValue)")
+            print("Value will be changed to \(someNewValue)")
+        }
+        didSet(oldSomeValue) {
+            print("Old value was \(oldSomeValue)")
+            print("New value is \(someValue)")
+        }
+    }
+    
+    
     override func viewDidLoad() {
+        
+        manoComputedInt = 20
+        
+        print(manoComputedInt)
+        print(manoComputedInt)
+        print(manoComputedInt)
+        print(manoComputedInt)
+        
+        someValue = 21
+        
+        
         usernameTextField.delegate = self
         passwordTextField.delegate = self
     }
@@ -47,9 +117,9 @@ class LoginViewController: CodeAcademyViewController {
             if let error = error as? LoginError {
                 switch error {
                 case .missingLoginData:
-                    showAlert(title: "Missing login data", message: "Please input login data")
+                    present(errorAlert, animated: true)
                 case .newLoginError:
-                    showAlert(title: "new error", message: "Please input login data")
+                    present(errorAlert, animated: true)
                 }
             }
         }

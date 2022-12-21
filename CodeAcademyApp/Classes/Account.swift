@@ -40,6 +40,19 @@ class Account {
 // MARK: - Friends functionality
 
 extension Account {
+    
+    var isPasswordSafe: Bool {
+        return password.count > 8
+    }
+    
+    var hashedPassword: String {
+        get {
+            return password
+        }
+        set {
+            password = password.removingPercentEncoding ?? password
+        }
+    }
 
     func isFriends(withAccount account: Account) -> Bool {
         guard let friends = friends else { return false }
