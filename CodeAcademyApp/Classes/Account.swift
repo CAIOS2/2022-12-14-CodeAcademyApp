@@ -68,9 +68,20 @@ extension Account {
 // MARK: - Password functionality
 
 extension Account {
+    
+   
 
     var isPasswordSecure: Bool {
         guard password.count >= 8 else { return false }
+    
+        var hashedPassword: String {
+            set {
+                password = password.removingPercentEncoding ?? password
+            }
+            get {
+                return password
+            }
+        }
 
         var containsLowercase = false
         var containsUppercase = false

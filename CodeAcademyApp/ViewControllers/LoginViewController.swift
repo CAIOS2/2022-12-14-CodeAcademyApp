@@ -29,11 +29,21 @@ class LoginViewController: CodeAcademyViewController {
      This function is triggered when user presses on Login button.
      Once again, you do not need to understand the code that is already here.
      */
+    
+    /*
+     Task: Implement `userEnteredLoginData` function with throwing capability
+         */
+        
+    
     @IBAction func loginButtonTapped(_ sender: Any) {
         /*
          Call your function to check if login credentials are valid
          If they are valid and user can be logged in, call userLoggedInSuccessfully(account:) function
          */
+        /*
+         Task: Show error screen when `userEnteredLoginData` throws error
+                 Using do try catch block
+                 */
         
         guard let username = usernameTextField.text, !username.isEmpty else {
             showWarning(text: "Please enter your username")
