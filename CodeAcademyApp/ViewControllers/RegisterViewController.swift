@@ -58,6 +58,11 @@ class RegisterViewController: CodeAcademyViewController {
             present(accountViewController, animated: true)
         }
     }
+    
+    override func showAlert(title: String, message: String) {
+        let title = "Error 1"
+        let message = "Fail to Register"
+    }
 
     // MARK: - Your implementation goes here
 
@@ -91,4 +96,7 @@ extension RegisterViewController {
         
         return Account(username: username, name: name, surname: surname, password: password)
     }
+    
+
 }
+
